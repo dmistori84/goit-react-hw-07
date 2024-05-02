@@ -4,8 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 import css from "./ContactForm.module.css";
-import { apiAddContacts } from "../../redux/contactsOps";
-import { addContacts } from "../../api/api";
+import { addContact } from "../../redux/contactsOps";
 
 const INITIAL_VALUES = {
 	name: "",
@@ -33,7 +32,7 @@ const ContactForm = () => {
 		// const newContact = {
 		// 	...data,
 		// };
-		dispatch(apiAddContacts(data));
+		dispatch(addContact(data));
 	};
 
 	const handleSubmit = (values, actions) => {

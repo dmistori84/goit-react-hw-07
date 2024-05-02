@@ -4,7 +4,7 @@ import ContactForm from "./components/ContactForm/ContactForm";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { apiDeleteContacts, apiRequestContacts } from "./redux/contactsOps";
+import { fetchContacts } from "./redux/contactsOps";
 
 // import { setFilter } from "./redux/filtersSlice";
 // import { addContact, deleteContact } from "./redux/contactsSlice";
@@ -21,7 +21,7 @@ function App() {
 	const { contactId } = useParams();
 
 	useEffect(() => {
-		dispatch(apiRequestContacts(contactId));
+		dispatch(fetchContacts(contactId));
 	}, [dispatch, contactId]);
 
 	// useEffect(() => {
