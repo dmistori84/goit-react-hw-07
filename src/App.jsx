@@ -1,6 +1,11 @@
 import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { apiDeleteContacts, apiRequestContacts } from "./redux/contactsOps";
+
 // import { setFilter } from "./redux/filtersSlice";
 // import { addContact, deleteContact } from "./redux/contactsSlice";
 
@@ -12,6 +17,17 @@ import ContactForm from "./components/ContactForm/ContactForm";
 // ];
 
 function App() {
+	const dispatch = useDispatch();
+	const { contactId } = useParams();
+
+	useEffect(() => {
+		dispatch(apiRequestContacts(contactId));
+	}, [dispatch, contactId]);
+
+	// useEffect(() => {
+	// 	dispatch(apiDeleteContacts(contactId));
+	// }, [dispatch, contactId]);
+
 	// const dispatch = useDispatch();
 	// const contacts = useSelector(state => state.contactData.contacts.items);
 	// const filter = useSelector(state => state.changeFilter);

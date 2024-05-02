@@ -1,17 +1,40 @@
-import { useSelector } from "react-redux";
+import {
+	// useDispatch,
+	useSelector,
+} from "react-redux";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
+// import { useEffect } from "react";
+// import { apiRequestContacts } from "../../redux/contactsOps";
+// import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
+import {
+	selectContactListisError,
+	selectContactListisLoading,
+	selectFilteredUsers,
+} from "../../redux/contactsSlice";
 
 const ContactList = () => {
-	const selectContacts = useSelector(state => state.contacts.items);
-	const selectNameFilter = useSelector(state => state.filters.name);
+	// const dispatch = useDispatch();
+	// const { contactId } = useParams();
+	// const selectContacts = useSelector(selectContactListselectContacts);
+	// const selectNameFilter = useSelector(selectContactListselectNameFilter);
+	const filteredContacts = useSelector(selectFilteredUsers);
+	// const selectContacts2 = useSelector(state => state.contactsOps.items);
+	const isLoading = useSelector(selectContactListisLoading);
+	const isError = useSelector(selectContactListisError);
 
-	const filteredContacts = selectContacts.filter(contact =>
-		contact.name.toLowerCase().includes(selectNameFilter.toLowerCase())
-	);
+	// useEffect(() => {
+	// 	dispatch(apiRequestContacts(contactId));
+	// }, [dispatch, contactId]);
+
+	// const filteredContacts = selectContacts.filter(contact =>
+	// 	contact.name.toLowerCase().includes(selectNameFilter.toLowerCase())
+	// );
 
 	return (
 		<div>
+			{isLoading && <Loader />}
 			<ul className={css.list}>
 				{filteredContacts.map(contact => (
 					<Contact key={contact.id} contacts={contact} />
