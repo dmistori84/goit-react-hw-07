@@ -15,6 +15,6 @@ export const deleteContactsById = async id => {
 };
 
 export const addContacts = async contact => {
-	const { data } = await instance.post(`/contacts/${contact}`);
+	const { data } = await instance.post("/contacts", contact);
 	return data;
 };
