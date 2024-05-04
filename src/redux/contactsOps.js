@@ -13,7 +13,7 @@ export const initialState = {
 };
 // apiRequestContacts
 export const fetchContacts = createAsyncThunk(
-	"contacts/getContacts",
+	"contacts/fetchAll",
 	async (contactId, thinkApi) => {
 		try {
 			const data = await requestContacts(contactId);

@@ -11,7 +11,7 @@ import Loader from "../Loader/Loader";
 import {
 	selectContactListisError,
 	selectContactListisLoading,
-	selectFilteredUsers,
+	selectFilteredContacts,
 } from "../../redux/contactsSlice";
 
 const ContactList = () => {
@@ -19,7 +19,7 @@ const ContactList = () => {
 	// const { contactId } = useParams();
 	// const selectContacts = useSelector(selectContactListselectContacts);
 	// const selectNameFilter = useSelector(selectContactListselectNameFilter);
-	const filteredContacts = useSelector(selectFilteredUsers);
+	const filteredContacts = useSelector(selectFilteredContacts);
 	// const selectContacts2 = useSelector(state => state.contactsOps.items);
 	const isLoading = useSelector(selectContactListisLoading);
 	const isError = useSelector(selectContactListisError);
